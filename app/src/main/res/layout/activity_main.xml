@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorBackground">
+
+    <TextView
+        android:id="@+id/questionTitle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/question_textMarginTop"
+        android:layout_marginBottom="@dimen/question_textMarginBottom"
+        android:background="@color/colorViewBackground"
+        android:textSize="@dimen/question_textSize"
+        android:textColor="@color/colorText"/>
+
+    <LinearLayout
+        android:id="@+id/choices"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_marginLeft="@dimen/question_layout_margin"
+        android:layout_marginRight="@dimen/question_layout_margin">
+
+        <Button
+            android:id="@+id/firstChoice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/button_bottomMargin"
+            android:background="@color/colorViewBackground"
+            android:textAlignment="center"
+            android:textAllCaps="false"/>
+
+        <Button
+            android:id="@+id/secondChoice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/button_bottomMargin"
+            android:background="@color/colorViewBackground"
+            android:textAlignment="center"
+            android:textAllCaps="false"/>
+
+        <Button
+            android:id="@+id/thirdChoice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/button_bottomMargin"
+            android:background="@color/colorViewBackground"
+            android:textAlignment="center"
+            android:textAllCaps="false"/>
+
+        <Button
+            android:id="@+id/fourthChoice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorViewBackground"
+            android:textAlignment="center"
+            android:textAllCaps="false"/>
+    </LinearLayout>
+</LinearLayout>
+

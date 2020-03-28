@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="question_textSize">25sp</dimen>
+    <dimen name="question_textMarginTop">32dp</dimen>
+    <dimen name="question_textMarginBottom">64dp</dimen>
+    <dimen name="button_bottomMargin">16dp</dimen>
+    <dimen name="question_layout_margin">8dp</dimen>
+</resources>
