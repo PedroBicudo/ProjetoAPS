@@ -1,65 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/colorBackground">
+    android:rowCount="2"
+    android:columnCount="1"
+    tools:context=".MainActivity">
+
+    <androidx.core.widget.ContentLoadingProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:progressTint="@color/progressBarTint"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
 
     <TextView
-        android:id="@+id/questionTitle"
+        android:id="@+id/question"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:gravity="center"
-        android:layout_marginTop="@dimen/question_textMarginTop"
-        android:layout_marginBottom="@dimen/question_textMarginBottom"
-        android:background="@color/colorViewBackground"
-        android:textSize="@dimen/question_textSize"
-        android:textColor="@color/colorText"/>
+        android:textSize="@dimen/default_question_size"
+        android:gravity="center"/>
 
-    <LinearLayout
+    <GridLayout
         android:id="@+id/choices"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:rowCount="4"
         android:orientation="vertical"
-        android:layout_marginLeft="@dimen/question_layout_margin"
-        android:layout_marginRight="@dimen/question_layout_margin">
+        android:layout_weight="1"
+        android:padding="16dp">
 
         <Button
-            android:id="@+id/firstChoice"
+            android:id="@+id/first_choice"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/button_bottomMargin"
-            android:background="@color/colorViewBackground"
-            android:textAlignment="center"
+            android:layout_height="@dimen/default_button_height"
+            android:layout_row="0"
+            android:layout_margin="@dimen/default_button_margin"
+            android:textSize="20sp"
             android:textAllCaps="false"/>
 
         <Button
-            android:id="@+id/secondChoice"
+            android:id="@+id/second_choice"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/button_bottomMargin"
-            android:background="@color/colorViewBackground"
-            android:textAlignment="center"
+            android:layout_height="@dimen/default_button_height"
+            android:layout_row="1"
+            android:layout_margin="@dimen/default_button_margin"
+            android:textSize="20sp"
             android:textAllCaps="false"/>
 
         <Button
-            android:id="@+id/thirdChoice"
+            android:id="@+id/third_choice"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/button_bottomMargin"
-            android:background="@color/colorViewBackground"
-            android:textAlignment="center"
+            android:layout_height="@dimen/default_button_height"
+            android:layout_row="2"
+            android:layout_margin="@dimen/default_button_margin"
+            android:textSize="20sp"
             android:textAllCaps="false"/>
 
         <Button
-            android:id="@+id/fourthChoice"
+            android:id="@+id/fourth_choice"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorViewBackground"
-            android:textAlignment="center"
+            android:layout_height="@dimen/default_button_height"
+            android:layout_row="3"
+            android:layout_margin="@dimen/default_button_margin"
+            android:textSize="20sp"
             android:textAllCaps="false"/>
-    </LinearLayout>
+    </GridLayout>
+
 </LinearLayout>
-
