@@ -35,7 +35,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         this.setActivityMainBinding(ActivityMainBinding.inflate(getLayoutInflater()));
         setContentView(this.getActivityMainBinding().getRoot());
+
+        // Dummy values para demonstração
+        correctChoice = "teste";
+        String[] choices = {"teste", "a", "b", "c"};
+        String enunciado = "Pergunta de teste?";
+
         this.setButtonListeners();
+        this.changeQuestionTitleAndChoices(enunciado, choices);
     }
 
     @Override
@@ -58,5 +65,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         this.activityMainBinding.secondChoice.setOnClickListener(this);
         this.activityMainBinding.thirdChoice.setOnClickListener(this);
         this.activityMainBinding.fourthChoice.setOnClickListener(this);
+    }
+
+    private void changeQuestionTitleAndChoices(String questionTitle, String[] textChoices) {
+        this.activityMainBinding.question.setText(questionTitle);
+        this.activityMainBinding.firstChoice.setText(textChoices[0]);
+        this.activityMainBinding.secondChoice.setText(textChoices[1]);
+        this.activityMainBinding.thirdChoice.setText(textChoices[2]);
+        this.activityMainBinding.fourthChoice.setText(textChoices[3]);
     }
 }
