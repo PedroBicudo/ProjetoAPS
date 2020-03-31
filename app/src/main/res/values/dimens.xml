@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="question_textSize">25sp</dimen>
-    <dimen name="question_textMarginTop">32dp</dimen>
-    <dimen name="question_textMarginBottom">64dp</dimen>
-    <dimen name="button_bottomMargin">16dp</dimen>
-    <dimen name="question_layout_margin">8dp</dimen>
+    <dimen name="default_choice_layout_padding">16dp</dimen>
+    <dimen name="default_choice_margin">4dp</dimen>
+    <dimen name="default_question_size">32sp</dimen>
+    <dimen name="default_button_size_text">20sp</dimen>
+    <dimen name="default_button_height">70dp</dimen>
+    <dimen name="default_button_margin">2dp</dimen>
 </resources>
