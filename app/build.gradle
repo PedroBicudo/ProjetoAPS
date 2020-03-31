@@ -3,7 +3,10 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 28
 
-
+    viewBinding {
+        enabled = true
+    }
+    
     defaultConfig {
         applicationId "apps.learn.projetoaps"
         minSdkVersion 22
