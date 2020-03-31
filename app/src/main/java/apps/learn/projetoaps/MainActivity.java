@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         this.setActivityMainBinding(ActivityMainBinding.inflate(getLayoutInflater()));
         setContentView(this.getActivityMainBinding().getRoot());
+        this.setButtonListeners();
     }
 
     @Override
@@ -50,5 +51,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         activityMainBinding.progressBar.setProgress(activityMainBinding.progressBar.getProgress()+10);
         choice.setBackgroundColor(Color.parseColor(backgroundAnswerColor));
+    }
+
+    private void setButtonListeners() {
+        this.activityMainBinding.firstChoice.setOnClickListener(this);
+        this.activityMainBinding.secondChoice.setOnClickListener(this);
+        this.activityMainBinding.thirdChoice.setOnClickListener(this);
+        this.activityMainBinding.fourthChoice.setOnClickListener(this);
     }
 }
