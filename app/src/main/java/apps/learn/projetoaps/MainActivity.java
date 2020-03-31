@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -11,6 +12,7 @@ import apps.learn.projetoaps.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
+    static final private String TAG_BUTTON = "choiceButton";
     private ActivityMainBinding activityMainBinding;
     private String correctChoice;
 
@@ -50,6 +52,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (!(v instanceof Button)) return;
         if (activityMainBinding.progressBar.getProgress() == 100) return;
         Button choice = (Button) v;
+
+        Log.i(TAG_BUTTON, "O botão contendo \""+choice.getText()+"\" foi pressionado.");
         String backgroundAnswerColor;
 
         backgroundAnswerColor =
