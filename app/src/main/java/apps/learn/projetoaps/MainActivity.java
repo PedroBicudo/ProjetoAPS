@@ -1,12 +1,18 @@
 package apps.learn.projetoaps;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
 import apps.learn.projetoaps.databinding.ActivityMainBinding;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private ActivityMainBinding activityMainBinding;
+    private String correctChoice;
 
     public ActivityMainBinding getActivityMainBinding() {
         return activityMainBinding;
@@ -16,6 +22,14 @@ public class MainActivity extends AppCompatActivity{
         this.activityMainBinding = activityMainBinding;
     }
 
+    public String getCorrectChoice() {
+        return correctChoice;
+    }
+
+    public void setCorrectChoice(String correctChoice) {
+        this.correctChoice = correctChoice;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,5 +37,18 @@ public class MainActivity extends AppCompatActivity{
         setContentView(this.getActivityMainBinding().getRoot());
     }
 
+    @Override
+    public void onClick(View v) {
+        if (!(v instanceof Button)) return;
+        if (activityMainBinding.progressBar.getProgress() == 100) return;
+        Button choice = (Button) v;
+        String backgroundAnswerColor;
 
+        backgroundAnswerColor =
+                choice.getText().equals(this.getCorrectChoice())?
+                        "green":"red";
+
+        activityMainBinding.progressBar.setProgress(activityMainBinding.progressBar.getProgress()+10);
+        choice.setBackgroundColor(Color.parseColor(backgroundAnswerColor));
+    }
 }
