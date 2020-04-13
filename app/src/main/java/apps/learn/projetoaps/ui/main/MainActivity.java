@@ -1,4 +1,4 @@
-package apps.learn.projetoaps;
+package apps.learn.projetoaps.ui.main;
 
 import androidx.appcompat.app.AppCompatActivity;
 
