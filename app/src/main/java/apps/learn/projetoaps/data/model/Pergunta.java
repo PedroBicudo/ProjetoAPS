@@ -1,4 +1,4 @@
-package apps.learn.projetoaps;
+package apps.learn.projetoaps.data.model;
 
 public class Pergunta {
     private String enunciado;
@@ -7,6 +7,7 @@ public class Pergunta {
     public void setEnunciado(String enunciado) {
         this.enunciado = enunciado;
     }
+
     public String getEnunciado() {
         return this.enunciado;
     }
