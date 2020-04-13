@@ -1,4 +1,4 @@
-package apps.learn.projetoaps;
+package apps.learn.projetoaps.data.model;
 
 public class Alternativa {
     private String texto;
