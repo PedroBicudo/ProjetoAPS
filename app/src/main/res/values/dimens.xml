@@ -6,4 +6,5 @@
     <dimen name="default_button_size_text">20sp</dimen>
     <dimen name="default_button_height">70dp</dimen>
     <dimen name="default_button_margin">2dp</dimen>
+    <dimen name="button_margin_menu">80dp</dimen>
 </resources>
