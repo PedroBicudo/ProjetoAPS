@@ -2,11 +2,16 @@ package apps.learn.projetoaps.ui.main;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import apps.learn.projetoaps.data.database.CriaBanco;
+
+import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
+import java.lang.reflect.Array;
 
 import apps.learn.projetoaps.databinding.ActivityMainBinding;
 
@@ -15,6 +20,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     static final private String TAG_BUTTON = "choiceButton";
     private ActivityMainBinding activityMainBinding;
     private String correctChoice;
+
+    CriaBanco db = new CriaBanco(null);
+
+    Cursor pergunta = (Cursor) db.gerarPergunta();
 
     public ActivityMainBinding getActivityMainBinding() {
         return activityMainBinding;
@@ -78,4 +87,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         this.activityMainBinding.thirdChoice.setText(textChoices[2]);
         this.activityMainBinding.fourthChoice.setText(textChoices[3]);
     }
+
+
 }
