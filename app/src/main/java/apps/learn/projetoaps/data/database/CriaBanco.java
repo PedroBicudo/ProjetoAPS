@@ -14,6 +14,7 @@ public class CriaBanco extends SQLiteOpenHelper {
     public static final String CONTACTS_TABLE_NAME = "Respostas";
     public static final int DB_VERSION = 1;
 
+
     public CriaBanco(Context context){
         super(context, DB_NAME,null, DB_VERSION);
     }
