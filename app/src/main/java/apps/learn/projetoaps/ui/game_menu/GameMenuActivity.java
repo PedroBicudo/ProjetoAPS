@@ -1,8 +1,10 @@
-package apps.learn.projetoaps.ui.main;
+package apps.learn.projetoaps.ui.game_menu;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import apps.learn.projetoaps.R;
 
 public class GameMenuActivity extends AppCompatActivity {
 

@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         this.setButtonListeners();
         this.changeQuestionTitleAndChoices(enunciado, choices);
     }
-
+    
     @Override
     public void onClick(View v) {
         if (!(v instanceof Button)) return;
