@@ -17,14 +17,6 @@ public class GameMenuActivity extends AppCompatActivity implements GameMenuContr
     private ActivityGameMenuBinding activityGameMenuBinding;
     private GameMenuPresenter gameMenuPresenter;
 
-    public ActivityGameMenuBinding getActivityGameMenuBinding() {
-        return activityGameMenuBinding;
-    }
-
-    public void setActivityGameMenuBinding(ActivityGameMenuBinding activityGameMenuBinding) {
-        this.activityGameMenuBinding = activityGameMenuBinding;
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
