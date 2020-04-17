@@ -6,13 +6,13 @@ import apps.learn.projetoaps.data.model.Pergunta;
 
 public interface GameMenuContract {
 
-    interface GameMenuView {
+    interface View {
         void hideStarButton();
         void hideProgressBar();
         void showProgressBar();
     }
 
-    interface GameMenuPresenter {
+    interface Presenter {
         Stack<Pergunta> getPerguntasFromDatabase();
         void openQuizActivity(Stack<Pergunta> perguntas);
     }
