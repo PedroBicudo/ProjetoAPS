@@ -3,14 +3,17 @@ package apps.learn.projetoaps.ui.game_menu;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-
-import apps.learn.projetoaps.R;
+import apps.learn.projetoaps.databinding.ActivityGameMenuBinding;
 
 public class GameMenuActivity extends AppCompatActivity {
+
+    private ActivityGameMenuBinding activityGameMenuBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game_menu);
+        activityGameMenuBinding = ActivityGameMenuBinding.inflate(getLayoutInflater());
+        setContentView(activityGameMenuBinding.getRoot());
     }
+
 }
