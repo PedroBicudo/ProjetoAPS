@@ -24,6 +24,8 @@ public class GameMenuActivity extends AppCompatActivity implements GameMenuContr
         super.onCreate(savedInstanceState);
         activityGameMenuBinding = ActivityGameMenuBinding.inflate(getLayoutInflater());
         setContentView(activityGameMenuBinding.getRoot());
+
+        GameMenuPresenter gameMenuPresenter = new GameMenuPresenter(this);
     }
 
     @Override
