@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -68,7 +70,7 @@ public class CriaBanco extends SQLiteOpenHelper {
         return numero;
     }
 
-    public Cursor gerarPergunta() {
+    public ArrayList gerarPergunta() {
         //Esse parametro vai ser usado para a geração de novas perguntas as querys serão feitas
         // a partir do ID
         int parametro = gerarNumAleatorio();
@@ -77,7 +79,19 @@ public class CriaBanco extends SQLiteOpenHelper {
 
         //Aqui ja fazemoso a Query
         Cursor res = db.rawQuery( "select perguntas, A, B, C, D from Alternativas, Questoes where Alternativas.id = '"+parametro+"' AND Questoes.id ='"+parametro+"'" , null );
-        return res;
+        //Criando o Array
+        ArrayList<Integer> resultDB = new ArrayList<>();
+        //Fazendo a indexação no array coluna por coluna
+        resultDB.add(res.getColumnIndex("perguntas"));
+        res.moveToNext();
+        resultDB.add(res.getColumnIndex("A"));
+        res.moveToNext();
+        resultDB.add(res.getColumnIndex("B"));
+        res.moveToNext();
+        resultDB.add(res.getColumnIndex("C"));
+        res.moveToNext();
+        resultDB.add(res.getColumnIndex("D"));
+        return resultDB;
     }
 
 }
