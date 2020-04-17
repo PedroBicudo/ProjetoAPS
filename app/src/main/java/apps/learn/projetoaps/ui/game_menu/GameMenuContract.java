@@ -7,12 +7,11 @@ import apps.learn.projetoaps.data.model.Pergunta;
 public interface GameMenuContract {
 
     interface View {
-        void hideStarButton();
-        void hideProgressBar();
+        void hideStartButton();
         void showProgressBar();
     }
 
-    interface Presenter {
+    interface Presenter extends android.view.View.OnClickListener {
         Stack<Pergunta> getPerguntasFromDatabase();
         void openQuizActivity(Stack<Pergunta> perguntas);
     }
