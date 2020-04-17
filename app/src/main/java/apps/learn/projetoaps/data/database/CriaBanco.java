@@ -68,32 +68,16 @@ public class CriaBanco extends SQLiteOpenHelper {
         return numero;
     }
 
-    public ArrayList gerarPergunta() {
+    public Cursor gerarPergunta() {
         //Esse parametro vai ser usado para a geração de novas perguntas as querys serão feitas
         // a partir do ID
         int parametro = gerarNumAleatorio();
 
         SQLiteDatabase db = this.getReadableDatabase();
 
-        //Agora nos vamos armazenar todos os valores que serão passados em um array
-        ArrayList<String> array_list = new ArrayList<String>();
         //Aqui ja fazemoso a Query
         Cursor res = db.rawQuery( "select perguntas, A, B, C, D from Alternativas, Questoes where Alternativas.id = '"+parametro+"' AND Questoes.id ='"+parametro+"'" , null );
-        res.moveToFirst();
-
-        while(res.isAfterLast() == false) {
-            array_list.add(res.getString(res.getColumnIndex("perguntas")));
-            res.moveToNext();
-            array_list.add(res.getString(res.getColumnIndex("A")));
-            res.moveToNext();
-            array_list.add(res.getString(res.getColumnIndex("B")));
-            res.moveToNext();
-            array_list.add(res.getString(res.getColumnIndex("C")));
-            res.moveToNext();
-            array_list.add(res.getString(res.getColumnIndex("D")));
-            res.moveToNext();
-        }
-        return array_list;
+        return res;
     }
 
 }
