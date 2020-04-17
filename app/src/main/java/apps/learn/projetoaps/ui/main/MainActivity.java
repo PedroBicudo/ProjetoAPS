@@ -2,7 +2,6 @@ package apps.learn.projetoaps.ui.main;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import apps.learn.projetoaps.data.database.CriaBanco;
 
 import android.database.Cursor;
 import android.graphics.Color;
@@ -11,19 +10,18 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 import apps.learn.projetoaps.databinding.ActivityMainBinding;
+import apps.learn.projetoaps.data.database.CriaBanco;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     static final private String TAG_BUTTON = "choiceButton";
     private ActivityMainBinding activityMainBinding;
     private String correctChoice;
+    CriaBanco db;
 
-    CriaBanco db = new CriaBanco(null);
-
-    Cursor pergunta = (Cursor) db.gerarPergunta();
 
     public ActivityMainBinding getActivityMainBinding() {
         return activityMainBinding;
@@ -47,9 +45,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         this.setActivityMainBinding(ActivityMainBinding.inflate(getLayoutInflater()));
         setContentView(this.getActivityMainBinding().getRoot());
 
+        db = new CriaBanco(this);
+
+        ArrayList<Integer> resultDB = new ArrayList<>();
+
+        ArrayList alt = db.gerarPergunta();
+
+        Log.v("Banco", String.valueOf(alt));
         // Dummy values para demonstração
-        correctChoice = "teste";
-        String[] choices = {"teste", "a", "b", "c"};
+        correctChoice = "A";
+        String[] choices = {"A", "B", "C", "D"};
         String enunciado = "Pergunta de teste?";
 
         this.setButtonListeners();
@@ -87,6 +92,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         this.activityMainBinding.thirdChoice.setText(textChoices[2]);
         this.activityMainBinding.fourthChoice.setText(textChoices[3]);
     }
+
+
 
 
 }
