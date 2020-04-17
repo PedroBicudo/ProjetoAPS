@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -13,6 +15,7 @@ public class CriaBanco extends SQLiteOpenHelper {
     public static final String DB_NAME = "APS.db";
     public static final String CONTACTS_TABLE_NAME = "Respostas";
     public static final int DB_VERSION = 1;
+
 
     public CriaBanco(Context context){
         super(context, DB_NAME,null, DB_VERSION);
@@ -74,25 +77,21 @@ public class CriaBanco extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getReadableDatabase();
 
-        //Agora nos vamos armazenar todos os valores que serão passados em um array
-        ArrayList<String> array_list = new ArrayList<String>();
         //Aqui ja fazemoso a Query
         Cursor res = db.rawQuery( "select perguntas, A, B, C, D from Alternativas, Questoes where Alternativas.id = '"+parametro+"' AND Questoes.id ='"+parametro+"'" , null );
-        res.moveToFirst();
-
-        while(res.isAfterLast() == false) {
-            array_list.add(res.getString(res.getColumnIndex("perguntas")));
-            res.moveToNext();
-            array_list.add(res.getString(res.getColumnIndex("A")));
-            res.moveToNext();
-            array_list.add(res.getString(res.getColumnIndex("B")));
-            res.moveToNext();
-            array_list.add(res.getString(res.getColumnIndex("C")));
-            res.moveToNext();
-            array_list.add(res.getString(res.getColumnIndex("D")));
-            res.moveToNext();
-        }
-        return array_list;
+        //Criando o Array
+        ArrayList<Integer> resultDB = new ArrayList<>();
+        //Fazendo a indexação no array coluna por coluna
+        resultDB.add(res.getColumnIndex("perguntas"));
+        res.moveToNext();
+        resultDB.add(res.getColumnIndex("A"));
+        res.moveToNext();
+        resultDB.add(res.getColumnIndex("B"));
+        res.moveToNext();
+        resultDB.add(res.getColumnIndex("C"));
+        res.moveToNext();
+        resultDB.add(res.getColumnIndex("D"));
+        return resultDB;
     }
 
 }
