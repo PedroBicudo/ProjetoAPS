@@ -40,7 +40,9 @@ public class GameMenuActivity extends AppCompatActivity implements GameMenuContr
     @Override
     public void openQuizActivity(Stack<Pergunta> perguntas) {
         Intent intent = new Intent(GameMenuActivity.this, MainActivity.class);
+        intent.putExtra("quizQuestions", perguntas);
         startActivity(intent);
+        finish();
     }
 
     @Override
