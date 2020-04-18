@@ -33,6 +33,11 @@ public class GameMenuActivity extends AppCompatActivity implements GameMenuContr
     }
 
     @Override
+    public void disableStartGameButton() {
+        activityGameMenuBinding.startGame.setEnabled(false);
+    }
+
+    @Override
     public void openQuizActivity(Stack<Pergunta> perguntas) {
         Intent intent = new Intent(GameMenuActivity.this, MainActivity.class);
         startActivity(intent);
