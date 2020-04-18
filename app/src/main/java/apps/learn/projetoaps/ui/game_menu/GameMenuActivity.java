@@ -28,11 +28,6 @@ public class GameMenuActivity extends AppCompatActivity implements GameMenuContr
     }
 
     @Override
-    public void hideStartButton() {
-        activityGameMenuBinding.startGame.setVisibility(View.GONE);
-    }
-
-    @Override
     public void showProgressBar() {
         activityGameMenuBinding.progressBar.setVisibility(View.VISIBLE);
     }
@@ -45,9 +40,6 @@ public class GameMenuActivity extends AppCompatActivity implements GameMenuContr
 
     @Override
     public void onClick(View v) {
-        hideStartButton();
-        showProgressBar();
-        Stack<Pergunta> perguntas = gameMenuPresenter.getPerguntasFromDatabase();
-        openQuizActivity(perguntas);
+        this.gameMenuPresenter.startGameEvent();
     }
 }
