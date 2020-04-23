@@ -1,4 +1,4 @@
-package apps.learn.projetoaps.ui.main;
+package apps.learn.projetoaps.ui.game_quiz;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,7 +10,7 @@ import android.widget.Button;
 
 import apps.learn.projetoaps.databinding.ActivityMainBinding;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class GameQuizActivity extends AppCompatActivity implements View.OnClickListener{
 
     static final private String TAG_BUTTON = "choiceButton";
     private ActivityMainBinding activityMainBinding;

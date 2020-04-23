@@ -10,7 +10,7 @@ import java.util.Stack;
 
 import apps.learn.projetoaps.data.model.Pergunta;
 import apps.learn.projetoaps.databinding.ActivityGameMenuBinding;
-import apps.learn.projetoaps.ui.main.MainActivity;
+import apps.learn.projetoaps.ui.game_quiz.GameQuizActivity;
 
 public class GameMenuActivity extends AppCompatActivity implements GameMenuContract.View {
 
@@ -39,7 +39,7 @@ public class GameMenuActivity extends AppCompatActivity implements GameMenuContr
 
     @Override
     public void openQuizActivity(Stack<Pergunta> perguntas) {
-        Intent intent = new Intent(GameMenuActivity.this, MainActivity.class);
+        Intent intent = new Intent(GameMenuActivity.this, GameQuizActivity.class);
         intent.putExtra("quizQuestions", perguntas);
         startActivity(intent);
         finish();
