@@ -6,7 +6,7 @@ android {
     viewBinding {
         enabled = true
     }
-    
+
     defaultConfig {
         applicationId "apps.learn.projetoaps"
         minSdkVersion 22
