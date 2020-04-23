@@ -10,7 +10,7 @@ import android.widget.Button;
 
 import apps.learn.projetoaps.databinding.ActivityGameQuizBinding;
 
-public class GameQuizActivity extends AppCompatActivity implements View.OnClickListener {
+public class GameQuizActivity extends AppCompatActivity implements View.OnClickListener{
 
     static final private String TAG_BUTTON = "choiceButton";
     private ActivityGameQuizBinding activityGameQuizBinding;
@@ -27,10 +27,6 @@ public class GameQuizActivity extends AppCompatActivity implements View.OnClickL
 
     public String getCorrectChoice() {
         return correctChoice;
-    }
-
-    public void setCorrectChoice(String correctChoice) {
-        this.correctChoice = correctChoice;
     }
 
     @Override
