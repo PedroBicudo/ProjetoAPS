@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.ArrayList;
+
 import apps.learn.projetoaps.data.model.Alternativa;
 import apps.learn.projetoaps.databinding.ActivityGameQuizBinding;
 
@@ -39,7 +41,14 @@ public class GameQuizActivity extends AppCompatActivity implements GameQuizContr
 
     @Override
     public void changeAlternativas(Alternativa[] alternativas) {
+        ArrayList<View> views = this.getActivityGameQuizBinding().choices.getTouchables();
 
+        for (int pos=0; pos < views.size(); pos++) {
+            Button choice = (Button) views.get(pos);
+            Alternativa alternativa = alternativas[pos];
+            choice.setText(alternativa.getTexto());
+            choice.setTag(choice.getId(), alternativa);
+        }
     }
 
     @Override
