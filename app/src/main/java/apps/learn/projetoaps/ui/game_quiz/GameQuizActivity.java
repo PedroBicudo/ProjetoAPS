@@ -12,7 +12,7 @@ import apps.learn.projetoaps.databinding.ActivityGameQuizBinding;
 
 public class GameQuizActivity extends AppCompatActivity {
 
-    static final private String TAG_BUTTON = "choiceButton";
+    private static final String TAG = "GameQuizActivity";
     private ActivityGameQuizBinding activityGameQuizBinding;
     private String correctChoice;
 
