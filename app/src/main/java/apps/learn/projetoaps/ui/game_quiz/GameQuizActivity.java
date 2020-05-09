@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -31,7 +32,7 @@ public class GameQuizActivity extends AppCompatActivity implements GameQuizContr
         super.onCreate(savedInstanceState);
         this.setActivityGameQuizBinding(ActivityGameQuizBinding.inflate(getLayoutInflater()));
         setContentView(this.getActivityGameQuizBinding().getRoot());
-
+        
     }
 
     @Override
@@ -58,7 +59,13 @@ public class GameQuizActivity extends AppCompatActivity implements GameQuizContr
 
     @Override
     public void resetButtonsColor() {
+        Button defaultButton = new Button(this);
+        ArrayList<View> views = this.getActivityGameQuizBinding().choices.getTouchables();
 
+        for (View view: views) {
+            Button choice = (Button) view;
+            choice.setBackground(defaultButton.getBackground());
+        }
     }
 
     @Override
