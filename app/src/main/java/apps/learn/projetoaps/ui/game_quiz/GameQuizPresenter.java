@@ -19,7 +19,9 @@ public class GameQuizPresenter implements GameQuizContract.Presenter {
 
     @Override
     public void isAlternativaCorreta(Button button) {
-
+        Alternativa alternativa = (Alternativa) button.getTag(button.getId());
+        String color = alternativa.getCorreta()? "green": "red";
+        this.gameQuizActivity.changeButtonColor(button, color);
     }
 
     @Override
