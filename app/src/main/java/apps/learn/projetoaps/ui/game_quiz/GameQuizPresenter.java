@@ -11,11 +11,37 @@ import apps.learn.projetoaps.data.model.Pergunta;
 public class GameQuizPresenter implements GameQuizContract.Presenter {
 
     private GameQuizActivity gameQuizActivity;
+    private Stack<Pergunta> perguntas;
     private int score;
 
-    public GameQuizPresenter(GameQuizActivity gameQuizActivity) {
+    public GameQuizActivity getGameQuizActivity() {
+        return gameQuizActivity;
+    }
+
+    public void setGameQuizActivity(GameQuizActivity gameQuizActivity) {
         this.gameQuizActivity = gameQuizActivity;
-        this.score = 0;
+    }
+
+    public Stack<Pergunta> getPerguntas() {
+        return perguntas;
+    }
+
+    public void setPerguntas(Stack<Pergunta> perguntas) {
+        this.perguntas = perguntas;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public GameQuizPresenter(GameQuizActivity gameQuizActivity, Stack<Pergunta> perguntas) {
+        this.setGameQuizActivity(gameQuizActivity);
+        this.setPerguntas(perguntas);
+        this.setScore(0);
     }
 
     @Override
