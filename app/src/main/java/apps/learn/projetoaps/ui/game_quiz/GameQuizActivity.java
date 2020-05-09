@@ -10,14 +10,25 @@ import android.view.View;
 import android.widget.Button;
 
 import java.util.ArrayList;
+import java.util.Stack;
 
 import apps.learn.projetoaps.data.model.Alternativa;
+import apps.learn.projetoaps.data.model.Pergunta;
 import apps.learn.projetoaps.databinding.ActivityGameQuizBinding;
 
 public class GameQuizActivity extends AppCompatActivity implements GameQuizContract.View {
 
     private static final String TAG = "GameQuizActivity";
     private ActivityGameQuizBinding activityGameQuizBinding;
+    private GameQuizPresenter gameQuizPresenter;
+
+    public GameQuizPresenter getGameQuizPresenter() {
+        return gameQuizPresenter;
+    }
+
+    public void setGameQuizPresenter(GameQuizPresenter gameQuizPresenter) {
+        this.gameQuizPresenter = gameQuizPresenter;
+    }
 
     public ActivityGameQuizBinding getActivityGameQuizBinding() {
         return activityGameQuizBinding;
@@ -32,7 +43,9 @@ public class GameQuizActivity extends AppCompatActivity implements GameQuizContr
         super.onCreate(savedInstanceState);
         this.setActivityGameQuizBinding(ActivityGameQuizBinding.inflate(getLayoutInflater()));
         setContentView(this.getActivityGameQuizBinding().getRoot());
-        
+        Stack<Pergunta> perguntas = new Stack<>();
+
+        this.setGameQuizPresenter(new GameQuizPresenter(this, perguntas));
     }
 
     @Override
@@ -75,6 +88,6 @@ public class GameQuizActivity extends AppCompatActivity implements GameQuizContr
 
     @Override
     public void onClick(View v) {
-
+        this.getGameQuizPresenter().verificarEscolhaEMudarPergunta((Button) v);
     }
 }
