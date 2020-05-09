@@ -10,7 +10,7 @@ import android.widget.Button;
 
 import apps.learn.projetoaps.databinding.ActivityGameQuizBinding;
 
-public class GameQuizActivity extends AppCompatActivity implements View.OnClickListener{
+public class GameQuizActivity extends AppCompatActivity {
 
     static final private String TAG_BUTTON = "choiceButton";
     private ActivityGameQuizBinding activityGameQuizBinding;
@@ -40,32 +40,7 @@ public class GameQuizActivity extends AppCompatActivity implements View.OnClickL
         String[] choices = {"teste", "a", "b", "c"};
         String enunciado = "Pergunta de teste?";
 
-        this.setButtonListeners();
         this.changeQuestionTitleAndChoices(enunciado, choices);
-    }
-    
-    @Override
-    public void onClick(View v) {
-        if (!(v instanceof Button)) return;
-        if (activityGameQuizBinding.progressBar.getProgress() == 100) return;
-        Button choice = (Button) v;
-
-        Log.i(TAG_BUTTON, "O botão contendo \""+choice.getText()+"\" foi pressionado.");
-        String backgroundAnswerColor;
-
-        backgroundAnswerColor =
-                choice.getText().equals(this.getCorrectChoice())?
-                        "green":"red";
-
-        activityGameQuizBinding.progressBar.setProgress(activityGameQuizBinding.progressBar.getProgress()+10);
-        choice.setBackgroundColor(Color.parseColor(backgroundAnswerColor));
-    }
-
-    private void setButtonListeners() {
-        this.activityGameQuizBinding.firstChoice.setOnClickListener(this);
-        this.activityGameQuizBinding.secondChoice.setOnClickListener(this);
-        this.activityGameQuizBinding.thirdChoice.setOnClickListener(this);
-        this.activityGameQuizBinding.fourthChoice.setOnClickListener(this);
     }
 
     private void changeQuestionTitleAndChoices(String questionTitle, String[] textChoices) {
