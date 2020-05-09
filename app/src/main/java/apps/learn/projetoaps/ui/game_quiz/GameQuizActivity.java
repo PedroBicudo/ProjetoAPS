@@ -34,7 +34,7 @@ public class GameQuizActivity extends AppCompatActivity implements GameQuizContr
 
     @Override
     public void changePergunta(String title) {
-        
+        this.getActivityGameQuizBinding().question.setText(title);
     }
 
     @Override
