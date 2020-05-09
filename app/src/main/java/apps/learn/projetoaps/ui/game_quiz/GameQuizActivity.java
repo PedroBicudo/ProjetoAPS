@@ -53,7 +53,7 @@ public class GameQuizActivity extends AppCompatActivity implements GameQuizContr
 
     @Override
     public void changeButtonColor(Button button, String color) {
-
+        button.setBackgroundColor(Color.parseColor(color));
     }
 
     @Override
