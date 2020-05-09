@@ -17,5 +17,6 @@ public interface GameQuizContract {
     interface Presenter {
         void changeCurrentPergunta();
         void isAlternativaCorreta(Button button);
+        void verificarEscolhaEMudarPergunta(Button button);
     }
 }
