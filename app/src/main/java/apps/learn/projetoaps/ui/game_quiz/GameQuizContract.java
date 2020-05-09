@@ -7,8 +7,11 @@ import apps.learn.projetoaps.data.model.Alternativa;
 public interface GameQuizContract {
 
     interface View {
-        void changeQuestionWording(String title);
-        void changeChoiceButton(Button button, Alternativa alternativa);
+        void changePergunta(String title);
+        void changeAlternativas(Alternativa[] alternativas);
+        void changeButtonColor(Button button, String color);
+        void resetButtonsColor();
+        void openScoreActivity(int score);
     }
 
     interface Presenter {}
