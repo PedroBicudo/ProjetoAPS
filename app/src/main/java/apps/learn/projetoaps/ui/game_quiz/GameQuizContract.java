@@ -14,5 +14,9 @@ public interface GameQuizContract {
         void openScoreActivity(int score);
     }
 
-    interface Presenter {}
+    interface Presenter {
+        void changeCurrentPergunta();
+        void isAlternativaCorreta(Button button);
+        void verificarEscolhaEMudarPergunta(Button button);
+    }
 }
