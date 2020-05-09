@@ -8,9 +8,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import apps.learn.projetoaps.data.model.Alternativa;
 import apps.learn.projetoaps.databinding.ActivityGameQuizBinding;
 
-public class GameQuizActivity extends AppCompatActivity {
+public class GameQuizActivity extends AppCompatActivity implements GameQuizContract.View {
 
     private static final String TAG = "GameQuizActivity";
     private ActivityGameQuizBinding activityGameQuizBinding;
@@ -31,4 +32,33 @@ public class GameQuizActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void changePergunta(String title) {
+        
+    }
+
+    @Override
+    public void changeAlternativas(Alternativa[] alternativas) {
+
+    }
+
+    @Override
+    public void changeButtonColor(Button button, String color) {
+
+    }
+
+    @Override
+    public void resetButtonsColor() {
+
+    }
+
+    @Override
+    public void openScoreActivity(int score) {
+
+    }
+
+    @Override
+    public void onClick(View v) {
+
+    }
 }
