@@ -11,6 +11,7 @@ public interface GameQuizContract {
         void changeAlternativas(Alternativa[] alternativas);
         void changeButtonColor(Button button, String color);
         void resetButtonsColor();
+        void openScoreActivity(int score);
     }
 
     interface Presenter {}
