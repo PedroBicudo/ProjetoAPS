@@ -3,11 +3,5 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.splash_screen.SplashScreen"
-    android:gravity="center">
-
-    <ProgressBar
-        android:layout_width="@dimen/progress_bar_width"
-        android:layout_height="@dimen/progress_bar_height"/>
-
-</LinearLayout>
+    android:background="@drawable/splash_screen_image"
+    tools:context=".ui.splash_screen.SplashScreen"/>
