@@ -10,6 +10,7 @@ public interface GameQuizContract {
         void changePergunta(String title);
         void changeAlternativas(Alternativa[] alternativas);
         void changeButtonColor(Button button, String color);
+        void resetButtonsColor();
     }
 
     interface Presenter {}
