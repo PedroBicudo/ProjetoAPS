@@ -1,6 +1,9 @@
 package apps.learn.projetoaps.ui.game_quiz;
 
+import android.util.Log;
 import android.widget.Button;
+
+import apps.learn.projetoaps.data.model.Alternativa;
 
 public class GameQuizPresenter implements GameQuizContract.Presenter {
 
@@ -12,9 +15,7 @@ public class GameQuizPresenter implements GameQuizContract.Presenter {
 
 
     @Override
-    public void changeCurrentPergunta() {
-        
-    }
+    public void changeCurrentPergunta() {}
 
     @Override
     public void isAlternativaCorreta(Button button) {
@@ -23,6 +24,7 @@ public class GameQuizPresenter implements GameQuizContract.Presenter {
 
     @Override
     public void verificarEscolhaEMudarPergunta(Button button) {
-
+        isAlternativaCorreta(button);
+        changeCurrentPergunta();
     }
 }
