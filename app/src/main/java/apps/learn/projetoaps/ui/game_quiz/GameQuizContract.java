@@ -1,12 +1,13 @@
 package apps.learn.projetoaps.ui.game_quiz;
 
+import android.view.View;
 import android.widget.Button;
 
 import apps.learn.projetoaps.data.model.Alternativa;
 
 public interface GameQuizContract {
 
-    interface View {
+    interface View extends android.view.View.OnClickListener {
         void changePergunta(String title);
         void changeAlternativas(Alternativa[] alternativas);
         void changeButtonColor(Button button, String color);
