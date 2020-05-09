@@ -45,7 +45,26 @@ public class GameQuizActivity extends AppCompatActivity implements GameQuizContr
         setContentView(this.getActivityGameQuizBinding().getRoot());
         Stack<Pergunta> perguntas = new Stack<>();
 
+        // Dummy alternativas
+        Alternativa[] alternativas = new Alternativa[4];
+        for (int pos=0; pos < alternativas.length; pos++) {
+            alternativas[pos] = new Alternativa();
+            alternativas[pos].setTexto("Alternativa "+(pos+1));
+            alternativas[pos].setCorreta(false);
+        }
+        alternativas[3].setCorreta(true);
+        changeAlternativas(alternativas);
+
+        this.initListeners();
         this.setGameQuizPresenter(new GameQuizPresenter(this, perguntas));
+    }
+
+    public void initListeners() {
+        ArrayList<View> views = this.getActivityGameQuizBinding().choices.getTouchables();
+
+        for (View view: views) {
+            view.setOnClickListener(this);
+        }
     }
 
     @Override
