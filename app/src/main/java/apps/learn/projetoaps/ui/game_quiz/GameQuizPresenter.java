@@ -45,7 +45,16 @@ public class GameQuizPresenter implements GameQuizContract.Presenter {
     }
 
     @Override
-    public void changeCurrentPergunta() {}
+    public void changeCurrentPergunta() {
+        if (this.getPerguntas().isEmpty()) {
+            // TODO - Adicionar para a mudança de activities.
+
+        } else {
+            Pergunta pergunta = this.getPerguntas().pop();
+            this.getGameQuizActivity().changePergunta(pergunta.getEnunciado());
+            this.getGameQuizActivity().changeAlternativas(pergunta.getAlternativas());
+        }
+    }
 
     @Override
     public void isAlternativaCorreta(Button button) {
