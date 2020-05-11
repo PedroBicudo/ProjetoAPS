@@ -50,9 +50,9 @@ public class GameQuizActivity extends AppCompatActivity implements GameQuizContr
         for (int pos=0; pos < alternativas.length; pos++) {
             alternativas[pos] = new Alternativa();
             alternativas[pos].setTexto("Alternativa "+(pos+1));
-            alternativas[pos].setCorreta(false);
+            alternativas[pos].setCorreta(0);
         }
-        alternativas[3].setCorreta(true);
+        alternativas[3].setCorreta(1);
         changeAlternativas(alternativas);
 
         this.initListeners();
