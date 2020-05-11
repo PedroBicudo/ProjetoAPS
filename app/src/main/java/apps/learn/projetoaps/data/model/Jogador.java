@@ -11,29 +11,30 @@ public class Jogador {
     @ColumnInfo(name = "ID_Jogador")
     @PrimaryKey(autoGenerate = true)
     @NonNull
-    public int id_jogador;
+    private int idJogador;
 
     @ColumnInfo(name = "Nome")
     @NonNull
-    public String nome;
+    private String nome;
 
     @ColumnInfo(name = "Resultado")
     @NonNull
-    public int resultado;
+    private int resultado;
 
-    public int getId_jogador() {
-        return id_jogador;
+    public int getIdJogador() {
+        return idJogador;
     }
 
-    public void setId_jogador(int id_jogador) {
-        this.id_jogador = id_jogador;
+    public void setIdJogador(int idJogador) {
+        this.idJogador = idJogador;
     }
 
+    @NonNull
     public String getNome() {
         return nome;
     }
 
-    public void setNome(String nome) {
+    public void setNome(@NonNull String nome) {
         this.nome = nome;
     }
 
@@ -44,5 +45,4 @@ public class Jogador {
     public void setResultado(int resultado) {
         this.resultado = resultado;
     }
-
 }
