@@ -1,8 +1,22 @@
 package apps.learn.projetoaps.data.model;
 
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "Alternativas")
 public class Alternativa {
+
+    @NonNull
+    @PrimaryKey
+    @ColumnInfo(name = "ID_Enunciado")
     private int idPergunta;
+
+    @ColumnInfo(name = "Alternativas")
     private String texto;
+
+    @ColumnInfo(name = "Correta")
     private int correta;
 
     public void setIdPergunta(int idPergunta) { this.idPergunta = idPergunta;}

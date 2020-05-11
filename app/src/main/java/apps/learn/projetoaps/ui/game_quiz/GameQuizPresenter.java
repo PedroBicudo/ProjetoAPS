@@ -60,13 +60,12 @@ public class GameQuizPresenter implements GameQuizContract.Presenter {
     public void isAlternativaCorreta(Button button) {
         Alternativa alternativa = (Alternativa) button.getTag(button.getId());
         String color;
-        if (alternativa.getCorreta()) {
+        if (alternativa.isCorreta()) {
             score++;
             color = "green";
 
         } else {
             color = "red";
-
         }
         this.gameQuizActivity.changeButtonColor(button, color);
     }
