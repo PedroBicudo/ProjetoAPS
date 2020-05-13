@@ -3,20 +3,26 @@ package apps.learn.projetoaps.data.model;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "Alternativas")
+@Entity(tableName = "ALTERNATIVAS", primaryKeys = {"ID_ALTERNATIVA", "ID_PERGUNTA"})
 public class Alternativa {
 
+    @ColumnInfo(name = "ID_ALTERNATIVA")
+    public int idAlternativa;
+
     @NonNull
-    @PrimaryKey
-    @ColumnInfo(name = "ID_Enunciado")
+    @ColumnInfo(name = "ID_PERGUNTA")
     private int idPergunta;
 
-    @ColumnInfo(name = "Alternativas")
+
+    @NonNull
+    @ColumnInfo(name = "TEXTO")
     private String texto;
 
-    @ColumnInfo(name = "Correta")
+    @NonNull
+    @ColumnInfo(name = "CORRETA")
     private int correta;
 
     public void setIdPergunta(int idPergunta) { this.idPergunta = idPergunta;}
@@ -33,6 +39,11 @@ public class Alternativa {
     public void setCorreta(int correta) {
         this.correta = correta;
     }
+
+    public int getCorreta() {
+        return correta;
+    }
+
     public boolean isCorreta(){
         boolean retorno;
         if (correta == 0){
@@ -42,4 +53,5 @@ public class Alternativa {
         }
         return retorno;
     }
+
 }
