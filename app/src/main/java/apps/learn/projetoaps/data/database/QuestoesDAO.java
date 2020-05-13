@@ -19,7 +19,7 @@ public interface QuestoesDAO {
     void insertNewScore(Jogador jogador);
 
     @Query("SELECT * FROM PERGUNTAS where ID_PERGUNTA = :id")
-    LiveData<List<Pergunta>> getPerguntasByIds(int[] id);
+    LiveData<List<Pergunta>> getPerguntasByIds(int id);
 
     @Query("SELECT * FROM ALTERNATIVAS where ALTERNATIVAS.ID_PERGUNTA = :id")
     LiveData<List<Alternativa>> getAlternativasById(int id);
