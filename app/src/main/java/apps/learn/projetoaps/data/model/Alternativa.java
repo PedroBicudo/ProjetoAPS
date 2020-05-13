@@ -6,8 +6,7 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "ALTERNATIVAS", primaryKeys = {"ID_ALTERNATIVA", "ID_PERGUNTA"},
-        foreignKeys = @ForeignKey(entity = Pergunta.class, childColumns = "ID_PERGUNTA", parentColumns = "ID_PERGUNTA"))
+@Entity(tableName = "ALTERNATIVAS", primaryKeys = {"ID_ALTERNATIVA", "ID_PERGUNTA"})
 public class Alternativa {
 
     @ColumnInfo(name = "ID_ALTERNATIVA")
