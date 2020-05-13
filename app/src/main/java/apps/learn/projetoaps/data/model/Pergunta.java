@@ -1,5 +1,6 @@
 package apps.learn.projetoaps.data.model;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
@@ -9,17 +10,16 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import io.reactivex.annotations.NonNull;
-
-@Entity(tableName = "Questoes")
+@Entity(tableName = "PERGUNTAS")
 public class Pergunta {
 
     @NonNull
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "ID_Questoes")
+    @ColumnInfo(name = "ID_PERGUNTA")
     private int idPergunta;
 
-    @ColumnInfo(name = "Perguntas")
+    @NonNull
+    @ColumnInfo(name = "ENUNCIADO")
     private String enunciado;
 
     @Ignore
