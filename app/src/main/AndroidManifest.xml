@@ -9,15 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.splash_screen.SplashScreen" android:theme="@style/SplashScreen">
+        <activity
+            android:name=".ui.splash_screen.SplashScreen"
+            android:theme="@style/SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".ui.game_menu.GameMenuActivity" />
-        <activity android:name=".ui.game_quiz.GameQuizActivity"/>
+        <activity android:name=".ui.game_quiz.GameQuizActivity" />
+        <activity android:name=".ui.game_score.GameScoreActivity"/>
     </application>
 
 </manifest>
