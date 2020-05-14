@@ -3,9 +3,9 @@ package apps.learn.projetoaps.util;
 import android.content.Context;
 import android.util.Log;
 
-import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -21,8 +21,8 @@ public class QuizRepository{
 
     private QuestoesDAO questoesDAO;
 
-    private List<Alternativa> QuizAlternativas;
-    private List<Pergunta> QuizPerguntas;
+    private List<String> QuizAlternativas = new ArrayList<>();
+    private List<String> QuizPerguntas = new ArrayList<>();
 
     public QuizRepository(Context context){
         database = AppDatabase.getInstance(context.getApplicationContext());
@@ -35,23 +35,27 @@ public class QuizRepository{
         questoesDAO.insertNewScore(jogador);
     }
 
-    public List<Pergunta> getQuizQuestions(Context context, int[] id) {
+    public List<String> getQuizQuestions(Context context, int[] id) {
         AppDatabase.getInstance(context).questoesDAO().getPerguntasByIds(id[0])
-                .observe((LifecycleOwner) context, (Observer<? super List<Pergunta>>) new Observer<List<Pergunta>>() {
+                .observeForever(new Observer<List<Pergunta>>() {
                     @Override
                     public void onChanged(List<Pergunta> perguntas) {
                         Log.d("TesteQuestions", "onChanged: "+perguntas.get(0).getEnunciado());
+                        QuizPerguntas.add(perguntas.get(0).getEnunciado());
+                        Log.d("TesteQuestions2", String.valueOf(QuizPerguntas));
                     }
                 });
         return QuizPerguntas;
     }
 
-    public List<Alternativa> getQuizAlternativas(Context context,int[] id) {
+    public List<String> getQuizAlternativas(Context context, int[] id) {
         AppDatabase.getInstance(context).questoesDAO().getAlternativasById(id[0])
-                .observe((LifecycleOwner) context, new Observer<List<Alternativa>>() {
+                .observeForever(new Observer<List<Alternativa>>() {
                     @Override
                     public void onChanged(List<Alternativa> alternativas) {
                         Log.d("TestandoAlternativas", "onChanged: "+alternativas.get(0).getTexto());
+                        QuizAlternativas.add(alternativas.get(0).getTexto());
+                        Log.d("TestandoAlternativas", String.valueOf(QuizAlternativas));
                     }
                 });
         return QuizAlternativas;
