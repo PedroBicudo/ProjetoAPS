@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.game_score.GameScoreActivity"
+    android:orientation="vertical">
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="@dimen/progress_bar_height"
+        android:layout_height="@dimen/progress_bar_width"
+        android:layout_centerInParent="true"
+        android:visibility="visible"/>
+
+    <TextView
+        android:id="@+id/txt_player_rank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/txt_player_rank_size"
+        android:layout_centerHorizontal="true"
+        android:text="Players Rank"
+        android:textSize="32sp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list_players_rank"
+        android:layout_width="match_parent"
+        android:layout_margin="@dimen/recycler_view_players_rank_margin"
+        android:layout_height="@dimen/recycler_view_players_rank_height"
+        android:layout_below="@id/txt_player_rank"/>
+
+    <Button
+        android:id="@+id/btn_restart"
+        android:layout_width="@dimen/button_restart_width"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/restart_button_bottom_margin"
+        android:text="@string/restart"
+        android:textAllCaps="false"
+        android:layout_below="@id/list_players_rank"/>
+
+</RelativeLayout>

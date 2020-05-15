@@ -2,6 +2,7 @@ package apps.learn.projetoaps.ui.game_quiz;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,6 +16,7 @@ import java.util.Stack;
 import apps.learn.projetoaps.data.model.Alternativa;
 import apps.learn.projetoaps.data.model.Pergunta;
 import apps.learn.projetoaps.databinding.ActivityGameQuizBinding;
+import apps.learn.projetoaps.ui.game_score.GameScoreActivity;
 
 public class GameQuizActivity extends AppCompatActivity implements GameQuizContract.View {
 
@@ -102,7 +104,10 @@ public class GameQuizActivity extends AppCompatActivity implements GameQuizContr
 
     @Override
     public void openScoreActivity(int score) {
-
+        Intent intent = new Intent(GameQuizActivity.this, GameScoreActivity.class);
+        intent.putExtra("player_score", score);
+        startActivity(intent);
+        finish();
     }
 
     @Override

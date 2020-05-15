@@ -48,6 +48,8 @@ public class GameQuizPresenter implements GameQuizContract.Presenter {
     public void changeCurrentPergunta() {
         if (this.getPerguntas().isEmpty()) {
             // TODO - Adicionar para a mudança de activities.
+            int dummyScore = 100;
+            this.getGameQuizActivity().openScoreActivity(dummyScore);
 
         } else {
             Pergunta pergunta = this.getPerguntas().pop();
