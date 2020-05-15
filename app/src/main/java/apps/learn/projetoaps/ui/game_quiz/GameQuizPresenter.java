@@ -7,11 +7,12 @@ import java.util.Stack;
 
 import apps.learn.projetoaps.data.model.Alternativa;
 import apps.learn.projetoaps.data.model.Pergunta;
+import apps.learn.projetoaps.data.model.Quiz;
 
 public class GameQuizPresenter implements GameQuizContract.Presenter {
 
     private GameQuizActivity gameQuizActivity;
-    private Stack<Pergunta> perguntas;
+    private Stack<Quiz> quizzes;
     private int score;
 
     public GameQuizActivity getGameQuizActivity() {
@@ -22,12 +23,12 @@ public class GameQuizPresenter implements GameQuizContract.Presenter {
         this.gameQuizActivity = gameQuizActivity;
     }
 
-    public Stack<Pergunta> getPerguntas() {
-        return perguntas;
+    public Stack<Quiz> getQuizzes() {
+        return quizzes;
     }
 
-    public void setPerguntas(Stack<Pergunta> perguntas) {
-        this.perguntas = perguntas;
+    public void setQuizzes(Stack<Quiz> quizzes) {
+        this.quizzes = quizzes;
     }
 
     public int getScore() {
@@ -38,23 +39,25 @@ public class GameQuizPresenter implements GameQuizContract.Presenter {
         this.score = score;
     }
 
-    public GameQuizPresenter(GameQuizActivity gameQuizActivity, Stack<Pergunta> perguntas) {
+    public GameQuizPresenter(GameQuizActivity gameQuizActivity, Stack<Quiz> quizzes) {
         this.setGameQuizActivity(gameQuizActivity);
-        this.setPerguntas(perguntas);
+        this.setQuizzes(quizzes);
         this.setScore(0);
     }
 
     @Override
     public void changeCurrentPergunta() {
-        if (this.getPerguntas().isEmpty()) {
+        if (this.getQuizzes().isEmpty()) {
             // TODO - Adicionar para a mudança de activities.
             int dummyScore = 100;
             this.getGameQuizActivity().openScoreActivity(dummyScore);
 
         } else {
-            Pergunta pergunta = this.getPerguntas().pop();
+            Quiz quiz = this.getQuizzes().pop();
+            Pergunta pergunta = quiz.getPergunta();
+            Alternativa[] alternativas = quiz.getAlternativas().toArray(new Alternativa[0]);
             this.getGameQuizActivity().changePergunta(pergunta.getEnunciado());
-            this.getGameQuizActivity().changeAlternativas(pergunta.getAlternativas());
+            this.getGameQuizActivity().changeAlternativas(alternativas);
         }
     }
 

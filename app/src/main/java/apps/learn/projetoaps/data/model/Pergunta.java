@@ -22,9 +22,6 @@ public class Pergunta {
     @ColumnInfo(name = "ENUNCIADO")
     private String enunciado;
 
-    @Ignore
-    private Alternativa alternativas[] = new Alternativa[4];
-
     public void setIdPergunta(int idPergunta){ this.idPergunta = idPergunta; }
 
     public int getIdPergunta() { return idPergunta; }
@@ -37,19 +34,4 @@ public class Pergunta {
         return this.enunciado;
     }
 
-    public void setAlternativas(Alternativa alternativas[]) {
-        this.alternativas = alternativas;
-    }
-
-    public Alternativa[] getAlternativas() {
-        List<String> lista = Arrays.asList("0", "1", "2", "3");
-        Collections.shuffle(lista);
-        Alternativa retorno[] = new Alternativa[4];
-
-        for (int i = 0; i < 4; i++) {
-            retorno[i] = this.alternativas[Integer.parseInt(lista.get(i))];
-        }
-
-        return retorno;
-    }
 }
