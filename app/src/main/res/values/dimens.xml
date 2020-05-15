@@ -9,4 +9,14 @@
     <dimen name="button_margin_menu">80dp</dimen>
     <dimen name="progress_bar_width">100dp</dimen>
     <dimen name="progress_bar_height">100dp</dimen>
+    <dimen name="restart_button_bottom_margin">16dp</dimen>
+    <dimen name="button_restart_width">128dp</dimen>
+    <dimen name="recycler_view_players_rank_margin">32dp</dimen>
+    <dimen name="recycler_view_players_rank_height">450dp</dimen>
+    <dimen name="txt_player_rank_size">8dp</dimen>
+    <dimen name="player_card_height">50dp</dimen>
+    <dimen name="player_card_margin">16dp</dimen>
+    <dimen name="txt_player_card_margin_left_right">16dp</dimen>
+    <dimen name="text_player_card_size">32sp</dimen>
+    <dimen name="char_limit">12</dimen>
 </resources>
