@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/player_card_height"
+    android:layout_margin="@dimen/player_card_margin"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/txt_player_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/txt_player_card_margin_left_right"
+        android:textSize="@dimen/text_player_card_size"/>
+
+
+    <TextView
+        android:id="@+id/txt_player_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/txt_player_card_margin_left_right"
+        android:textSize="@dimen/text_player_card_size"/>
+
+
+</RelativeLayout>
