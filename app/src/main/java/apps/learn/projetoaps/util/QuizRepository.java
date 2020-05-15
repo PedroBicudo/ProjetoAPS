@@ -3,6 +3,7 @@ package apps.learn.projetoaps.util;
 import android.content.Context;
 import android.util.Log;
 
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import apps.learn.projetoaps.data.database.QuestoesDAO;
 import apps.learn.projetoaps.data.model.Alternativa;
 import apps.learn.projetoaps.data.model.Jogador;
 import apps.learn.projetoaps.data.model.Pergunta;
+import apps.learn.projetoaps.data.model.Quiz;
 
 public class QuizRepository{
 
@@ -35,17 +37,8 @@ public class QuizRepository{
         questoesDAO.insertNewScore(jogador);
     }
 
-    public List<String> getQuizQuestions(Context context, int[] id) {
-        AppDatabase.getInstance(context).questoesDAO().getPerguntasByIds(id[0])
-                .observeForever(new Observer<List<Pergunta>>() {
-                    @Override
-                    public void onChanged(List<Pergunta> perguntas) {
-                        Log.d("TesteQuestions", "onChanged: "+perguntas.get(0).getEnunciado());
-                        QuizPerguntas.add(perguntas.get(0).getEnunciado());
-                        Log.d("TesteQuestions2", String.valueOf(QuizPerguntas));
-                    }
-                });
-        return QuizPerguntas;
+    public LiveData<List<Quiz>> getQuizQuestions(int[] id) {
+        return database.questoesDAO().getPerguntasByIds(id);
     }
 
     public List<String> getQuizAlternativas(Context context, int[] id) {
