@@ -15,6 +15,7 @@ import java.util.Stack;
 
 import apps.learn.projetoaps.data.model.Alternativa;
 import apps.learn.projetoaps.data.model.Pergunta;
+import apps.learn.projetoaps.data.model.Quiz;
 import apps.learn.projetoaps.databinding.ActivityGameQuizBinding;
 import apps.learn.projetoaps.ui.game_score.GameScoreActivity;
 
@@ -45,7 +46,7 @@ public class GameQuizActivity extends AppCompatActivity implements GameQuizContr
         super.onCreate(savedInstanceState);
         this.setActivityGameQuizBinding(ActivityGameQuizBinding.inflate(getLayoutInflater()));
         setContentView(this.getActivityGameQuizBinding().getRoot());
-        Stack<Pergunta> perguntas = new Stack<>();
+        Stack<Quiz> quizzes = new Stack<>();
 
         // Dummy alternativas
         Alternativa[] alternativas = new Alternativa[4];
@@ -58,7 +59,7 @@ public class GameQuizActivity extends AppCompatActivity implements GameQuizContr
         changeAlternativas(alternativas);
 
         this.initListeners();
-        this.setGameQuizPresenter(new GameQuizPresenter(this, perguntas));
+        this.setGameQuizPresenter(new GameQuizPresenter(this, quizzes));
     }
 
     public void initListeners() {
