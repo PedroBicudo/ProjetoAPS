@@ -1,6 +1,7 @@
 package apps.learn.projetoaps.ui.game_menu;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 import apps.learn.projetoaps.data.model.Pergunta;
@@ -15,6 +16,7 @@ public interface GameMenuContract {
     }
 
     interface Presenter {
-        void startGameEvent();
+        void startGameEvent(List<Quiz> quizzes) ;
+        void loadQuizQuestions();
     }
 }
