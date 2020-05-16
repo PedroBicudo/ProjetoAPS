@@ -6,10 +6,13 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import org.parceler.Parcel;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+@Parcel
 @Entity(tableName = "PERGUNTAS")
 public class Pergunta {
 
