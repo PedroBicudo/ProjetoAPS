@@ -1,10 +1,14 @@
 package apps.learn.projetoaps.ui.game_menu;
 
+import androidx.lifecycle.Observer;
+
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 import apps.learn.projetoaps.data.model.Pergunta;
 import apps.learn.projetoaps.data.model.Quiz;
+import apps.learn.projetoaps.util.QuizRepository;
 
 public class GameMenuPresenter implements GameMenuContract.Presenter {
 
@@ -14,11 +18,24 @@ public class GameMenuPresenter implements GameMenuContract.Presenter {
         this.gameMenuActivity = gameMenuActivity;
     }
 
-    // TODO - Adicionar método Util para obter perguntas do banco de dados
     @Override
-    public void startGameEvent() {
+    public void loadQuizQuestions() {
+        QuizRepository quizRepository = new QuizRepository(this.gameMenuActivity);
+        int[] a = {1, 2, 3};
+        quizRepository.getQuizQuestions(a)
+                .observe(this.gameMenuActivity, new Observer<List<Quiz>>() {
+                    @Override
+                    public void onChanged(List<Quiz> quizzes) {
+                        startGameEvent(quizzes);
+                    }
+                });
+    }
+
+    @Override
+    public void startGameEvent(List<Quiz> quizzes) {
         gameMenuActivity.disableStartGameButton();
         gameMenuActivity.showProgressBar();
-        gameMenuActivity.openQuizActivity(new ArrayList<Quiz>());
+        gameMenuActivity.openQuizActivity(new ArrayList<Quiz>(quizzes));
     }
+
 }
