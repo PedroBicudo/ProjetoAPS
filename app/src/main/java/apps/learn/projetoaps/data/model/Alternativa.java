@@ -6,6 +6,9 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
+import org.parceler.Parcel;
+
+@Parcel
 @Entity(tableName = "ALTERNATIVAS", primaryKeys = {"ID_ALTERNATIVA", "ID_PERGUNTA"})
 public class Alternativa {
 
