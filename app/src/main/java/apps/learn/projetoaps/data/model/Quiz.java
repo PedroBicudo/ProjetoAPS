@@ -3,15 +3,21 @@ package apps.learn.projetoaps.data.model;
 import androidx.room.Embedded;
 import androidx.room.Relation;
 
+import org.parceler.Parcel;
+import org.parceler.ParcelPropertyConverter;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+@Parcel
 public class Quiz {
+
     @Embedded
     private Pergunta pergunta;
 
+    @ParcelPropertyConverter(QuizAlternativasParcelConverter.class)
     @Relation(parentColumn = "ID_PERGUNTA", entityColumn = "ID_PERGUNTA")
     private List<Alternativa> alternativas;
 
