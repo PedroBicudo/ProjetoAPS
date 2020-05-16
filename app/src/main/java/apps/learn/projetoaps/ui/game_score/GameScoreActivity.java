@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import org.parceler.Parcels;
+
 import java.util.ArrayList;
 import java.util.Stack;
 import apps.learn.projetoaps.R;
@@ -33,18 +35,18 @@ public class GameScoreActivity extends AppCompatActivity implements GameScoreCon
         activityGameScoreBinding = ActivityGameScoreBinding.inflate(getLayoutInflater());
         setContentView(activityGameScoreBinding.getRoot());
 
-        this.gameScorePresenter = new GameScorePresenter(GameScoreActivity.this);
-        this.gameScorePresenter.loadPlayerList();
+        this.initListeners();
 
         this.view = getLayoutInflater().inflate(R.layout.fragment_insert_player_name, null);
         getAlertDialog().show();
 
-        this.activityGameScoreBinding.btnRestart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                gameScorePresenter.loadQuizQuestions();
-            }
-        });
+        this.gameScorePresenter = new GameScorePresenter(GameScoreActivity.this);
+        this.gameScorePresenter.loadPlayerList();
+
+    }
+
+    public void initListeners() {
+        this.activityGameScoreBinding.btnRestart.setOnClickListener(this);
     }
 
     @Override
@@ -92,9 +94,13 @@ public class GameScoreActivity extends AppCompatActivity implements GameScoreCon
     @Override
     public void openGameQuizActivity(ArrayList<Quiz> quizzes) {
         Intent intent = new Intent(GameScoreActivity.this, GameQuizActivity.class);
-        intent.putExtra("quizQuestions", quizzes);
+        intent.putExtra("quizQuestions", Parcels.wrap(quizzes));
         startActivity(intent);
         finish();
     }
 
+    @Override
+    public void onClick(View v) {
+        gameScorePresenter.loadQuizQuestions();
+    }
 }
