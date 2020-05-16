@@ -87,6 +87,16 @@ public class GameQuizActivity extends AppCompatActivity implements GameQuizContr
     }
 
     @Override
+    public void changeProgressTimer(int progress) {
+        this.getActivityGameQuizBinding().progressBar.setProgress(progress);
+    }
+
+    @Override
+    public int getProgressCurrentValue() {
+        return this.getActivityGameQuizBinding().progressBar.getProgress();
+    }
+
+    @Override
     public void resetButtonsColor() {
         Button defaultButton = new Button(this);
         ArrayList<View> views = this.getActivityGameQuizBinding().choices.getTouchables();
