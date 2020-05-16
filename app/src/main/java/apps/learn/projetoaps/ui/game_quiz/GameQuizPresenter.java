@@ -3,6 +3,7 @@ package apps.learn.projetoaps.ui.game_quiz;
 import android.util.Log;
 import android.widget.Button;
 
+import java.util.ArrayList;
 import java.util.Stack;
 
 import apps.learn.projetoaps.data.model.Alternativa;
@@ -27,8 +28,12 @@ public class GameQuizPresenter implements GameQuizContract.Presenter {
         return quizzes;
     }
 
-    public void setQuizzes(Stack<Quiz> quizzes) {
-        this.quizzes = quizzes;
+    public void setQuizzes(ArrayList<Quiz> quizzes) {
+        Stack<Quiz> quizStack = new Stack<>();
+        for (Quiz quiz: quizzes) {
+            quizStack.add(quiz);
+        }
+        this.quizzes = quizStack;
     }
 
     public int getScore() {
@@ -39,7 +44,7 @@ public class GameQuizPresenter implements GameQuizContract.Presenter {
         this.score = score;
     }
 
-    public GameQuizPresenter(GameQuizActivity gameQuizActivity, Stack<Quiz> quizzes) {
+    public GameQuizPresenter(GameQuizActivity gameQuizActivity, ArrayList<Quiz> quizzes) {
         this.setGameQuizActivity(gameQuizActivity);
         this.setQuizzes(quizzes);
         this.setScore(0);
