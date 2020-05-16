@@ -46,6 +46,6 @@ public class GameMenuActivity extends AppCompatActivity implements GameMenuContr
 
     @Override
     public void onClick(View v) {
-        this.gameMenuPresenter.startGameEvent();
+        this.gameMenuPresenter.loadQuizQuestions();
     }
 }
