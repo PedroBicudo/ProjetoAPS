@@ -1,5 +1,6 @@
 package apps.learn.projetoaps.ui.game_quiz;
 
+import android.os.Handler;
 import android.util.Log;
 import android.widget.Button;
 
@@ -53,7 +54,6 @@ public class GameQuizPresenter implements GameQuizContract.Presenter {
     @Override
     public void changeCurrentPergunta() {
         if (this.getQuizzes().isEmpty()) {
-            // TODO - Adicionar para a mudança de activities.
             int dummyScore = 100;
             this.getGameQuizActivity().openScoreActivity(dummyScore);
 
@@ -83,6 +83,14 @@ public class GameQuizPresenter implements GameQuizContract.Presenter {
     @Override
     public void verificarEscolhaEMudarPergunta(Button button) {
         isAlternativaCorreta(button);
-        changeCurrentPergunta();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                gameQuizActivity.resetButtonsColor();
+                changeCurrentPergunta();
+            }
+        }, CHOICE_TIME_VISUALIZATION);
+
     }
 }

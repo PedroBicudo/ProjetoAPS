@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import org.parceler.Parcels;
+
 import java.util.ArrayList;
 import java.util.Stack;
 
@@ -46,20 +48,12 @@ public class GameQuizActivity extends AppCompatActivity implements GameQuizContr
         super.onCreate(savedInstanceState);
         this.setActivityGameQuizBinding(ActivityGameQuizBinding.inflate(getLayoutInflater()));
         setContentView(this.getActivityGameQuizBinding().getRoot());
-        ArrayList<Quiz> quizzes = new ArrayList<>();
 
-        // Dummy alternativas
-        Alternativa[] alternativas = new Alternativa[4];
-        for (int pos=0; pos < alternativas.length; pos++) {
-            alternativas[pos] = new Alternativa();
-            alternativas[pos].setTexto("Alternativa "+(pos+1));
-            alternativas[pos].setCorreta(0);
-        }
-        alternativas[3].setCorreta(1);
-        changeAlternativas(alternativas);
+        ArrayList<Quiz> quizzes = Parcels.unwrap(this.getIntent().getParcelableExtra("quizQuestions"));
 
         this.initListeners();
         this.setGameQuizPresenter(new GameQuizPresenter(this, quizzes));
+        this.getGameQuizPresenter().changeCurrentPergunta();
     }
 
     public void initListeners() {

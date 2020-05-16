@@ -16,6 +16,7 @@ public interface GameQuizContract {
     }
 
     interface Presenter {
+        int CHOICE_TIME_VISUALIZATION = 300;
         void changeCurrentPergunta();
         void isAlternativaCorreta(Button button);
         void verificarEscolhaEMudarPergunta(Button button);

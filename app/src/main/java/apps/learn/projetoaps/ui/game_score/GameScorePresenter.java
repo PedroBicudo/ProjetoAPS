@@ -3,13 +3,17 @@ package apps.learn.projetoaps.ui.game_score;
 import android.os.Handler;
 import android.util.Log;
 
+import androidx.lifecycle.Observer;
+
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 import apps.learn.projetoaps.data.model.Jogador;
 import apps.learn.projetoaps.data.model.Pergunta;
 import apps.learn.projetoaps.data.model.Quiz;
 import apps.learn.projetoaps.ui.adapter.PlayersViewAdapter;
+import apps.learn.projetoaps.util.QuizRepository;
 
 public class GameScorePresenter implements GameScoreContract.Presenter {
 
@@ -53,9 +57,21 @@ public class GameScorePresenter implements GameScoreContract.Presenter {
     @Override
     public void loadQuizQuestions() {
         this.gameScoreActivity.setProgressBarVisible();
-        // TODO - Acessar o método de requisição de perguntas
-        this.gameScoreActivity.openGameQuizActivity(new ArrayList<Quiz>());
+        QuizRepository quizRepository = new QuizRepository(this.gameScoreActivity);
+        int[] a = {1, 2, 3, 5};
+        quizRepository.getQuizQuestions(a)
+                .observe(this.gameScoreActivity, new Observer<List<Quiz>>() {
+                    @Override
+                    public void onChanged(List<Quiz> quizzes) {
+                        restartGameEvent(quizzes);
+                    }
+                });
     }
 
+    @Override
+    public void restartGameEvent(List<Quiz> quizzes) {
+        this.gameScoreActivity.setProgressBarGone();
+        this.gameScoreActivity.openGameQuizActivity(new ArrayList<Quiz>(quizzes));
+    }
 
 }
