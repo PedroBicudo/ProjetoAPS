@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import java.util.ArrayList;
 import java.util.Stack;
 
 import apps.learn.projetoaps.data.model.Pergunta;
@@ -39,7 +40,7 @@ public class GameMenuActivity extends AppCompatActivity implements GameMenuContr
     }
 
     @Override
-    public void openQuizActivity(Stack<Quiz> quizzes) {
+    public void openQuizActivity(ArrayList<Quiz> quizzes) {
         Intent intent = new Intent(GameMenuActivity.this, GameQuizActivity.class);
         intent.putExtra("quizQuestions", quizzes);
         startActivity(intent);

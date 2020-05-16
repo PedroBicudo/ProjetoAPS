@@ -46,7 +46,7 @@ public class GameQuizActivity extends AppCompatActivity implements GameQuizContr
         super.onCreate(savedInstanceState);
         this.setActivityGameQuizBinding(ActivityGameQuizBinding.inflate(getLayoutInflater()));
         setContentView(this.getActivityGameQuizBinding().getRoot());
-        Stack<Quiz> quizzes = new Stack<>();
+        ArrayList<Quiz> quizzes = new ArrayList<>();
 
         // Dummy alternativas
         Alternativa[] alternativas = new Alternativa[4];
