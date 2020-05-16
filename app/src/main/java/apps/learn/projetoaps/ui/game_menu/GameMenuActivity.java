@@ -5,11 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-
+import org.parceler.Parcels;
 import java.util.ArrayList;
-import java.util.Stack;
-
-import apps.learn.projetoaps.data.model.Pergunta;
 import apps.learn.projetoaps.data.model.Quiz;
 import apps.learn.projetoaps.databinding.ActivityGameMenuBinding;
 import apps.learn.projetoaps.ui.game_quiz.GameQuizActivity;
@@ -42,7 +39,7 @@ public class GameMenuActivity extends AppCompatActivity implements GameMenuContr
     @Override
     public void openQuizActivity(ArrayList<Quiz> quizzes) {
         Intent intent = new Intent(GameMenuActivity.this, GameQuizActivity.class);
-        intent.putExtra("quizQuestions", quizzes);
+        intent.putExtra("quizQuestions", Parcels.wrap(quizzes));
         startActivity(intent);
         finish();
     }
