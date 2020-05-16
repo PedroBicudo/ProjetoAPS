@@ -10,9 +10,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 import java.util.Stack;
 import apps.learn.projetoaps.R;
 import apps.learn.projetoaps.data.model.Pergunta;
+import apps.learn.projetoaps.data.model.Quiz;
 import apps.learn.projetoaps.databinding.ActivityGameScoreBinding;
 import apps.learn.projetoaps.ui.adapter.PlayersViewAdapter;
 import apps.learn.projetoaps.ui.game_quiz.GameQuizActivity;
@@ -87,9 +90,9 @@ public class GameScoreActivity extends AppCompatActivity implements GameScoreCon
     }
 
     @Override
-    public void openGameQuizActivity(Stack<Pergunta> perguntas) {
+    public void openGameQuizActivity(ArrayList<Quiz> quizzes) {
         Intent intent = new Intent(GameScoreActivity.this, GameQuizActivity.class);
-        intent.putExtra("quizQuestions", perguntas);
+        intent.putExtra("quizQuestions", quizzes);
         startActivity(intent);
         finish();
     }

@@ -1,8 +1,10 @@
 package apps.learn.projetoaps.ui.game_menu;
 
+import java.util.ArrayList;
 import java.util.Stack;
 
 import apps.learn.projetoaps.data.model.Pergunta;
+import apps.learn.projetoaps.data.model.Quiz;
 
 public class GameMenuPresenter implements GameMenuContract.Presenter {
 
@@ -17,6 +19,6 @@ public class GameMenuPresenter implements GameMenuContract.Presenter {
     public void startGameEvent() {
         gameMenuActivity.disableStartGameButton();
         gameMenuActivity.showProgressBar();
-        gameMenuActivity.openQuizActivity(new Stack<Pergunta>());
+        gameMenuActivity.openQuizActivity(new ArrayList<Quiz>());
     }
 }

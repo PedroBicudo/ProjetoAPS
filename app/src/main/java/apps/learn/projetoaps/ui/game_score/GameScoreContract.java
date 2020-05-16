@@ -1,7 +1,10 @@
 package apps.learn.projetoaps.ui.game_score;
 import android.app.AlertDialog;
+
+import java.util.ArrayList;
 import java.util.Stack;
 import apps.learn.projetoaps.data.model.Pergunta;
+import apps.learn.projetoaps.data.model.Quiz;
 import apps.learn.projetoaps.ui.adapter.PlayersViewAdapter;
 
 public interface GameScoreContract {
@@ -12,7 +15,7 @@ public interface GameScoreContract {
         void setProgressBarGone();
         void setProgressBarVisible();
         void populateRecyclerView(PlayersViewAdapter playersViewAdapter);
-        void openGameQuizActivity(Stack<Pergunta> perguntas);
+        void openGameQuizActivity(ArrayList<Quiz> quizzes);
     }
 
     interface Presenter {

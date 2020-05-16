@@ -8,6 +8,7 @@ import java.util.Stack;
 
 import apps.learn.projetoaps.data.model.Jogador;
 import apps.learn.projetoaps.data.model.Pergunta;
+import apps.learn.projetoaps.data.model.Quiz;
 import apps.learn.projetoaps.ui.adapter.PlayersViewAdapter;
 
 public class GameScorePresenter implements GameScoreContract.Presenter {
@@ -53,7 +54,7 @@ public class GameScorePresenter implements GameScoreContract.Presenter {
     public void loadQuizQuestions() {
         this.gameScoreActivity.setProgressBarVisible();
         // TODO - Acessar o método de requisição de perguntas
-        this.gameScoreActivity.openGameQuizActivity(new Stack<Pergunta>());
+        this.gameScoreActivity.openGameQuizActivity(new ArrayList<Quiz>());
     }
 
 
