@@ -54,7 +54,7 @@ public class GameScorePresenter implements GameScoreContract.Presenter {
     public void loadQuizQuestions() {
         this.gameScoreActivity.setProgressBarVisible();
         // TODO - Acessar o método de requisição de perguntas
-        this.gameScoreActivity.openGameQuizActivity(new Stack<Quiz>());
+        this.gameScoreActivity.openGameQuizActivity(new ArrayList<Quiz>());
     }
 
 
