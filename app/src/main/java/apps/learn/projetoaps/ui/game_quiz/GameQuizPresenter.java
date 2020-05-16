@@ -1,5 +1,6 @@
 package apps.learn.projetoaps.ui.game_quiz;
 
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.util.Log;
 import android.widget.Button;
@@ -14,6 +15,7 @@ import apps.learn.projetoaps.data.model.Quiz;
 public class GameQuizPresenter implements GameQuizContract.Presenter {
 
     private GameQuizActivity gameQuizActivity;
+    private CountDownTimer timer;
     private Stack<Quiz> quizzes;
     private int score;
 
@@ -55,15 +57,49 @@ public class GameQuizPresenter implements GameQuizContract.Presenter {
     public void changeCurrentPergunta() {
         if (this.getQuizzes().isEmpty()) {
             int dummyScore = 100;
+            this.timer.cancel();
             this.getGameQuizActivity().openScoreActivity(dummyScore);
 
         } else {
+            startCountDownTimer();
             Quiz quiz = this.getQuizzes().pop();
             Pergunta pergunta = quiz.getPergunta();
             Alternativa[] alternativas = quiz.getAlternativas().toArray(new Alternativa[0]);
             this.getGameQuizActivity().changePergunta(pergunta.getEnunciado());
             this.getGameQuizActivity().changeAlternativas(alternativas);
         }
+    }
+
+    @Override
+    public void startCountDownTimer() {
+        getGameQuizActivity().changeProgressTimer(0);
+
+        if (this.timer != null) {
+            this.timer.cancel();
+
+        } else {
+            this.timer = new CountDownTimer(TIME_TO_ANSWER_MILISECONDS, INTERVAL_TIME_TO_ANSWER_MILISECONDS) {
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    int currentPercentage = gameQuizActivity.getProgressCurrentValue();
+                    gameQuizActivity.changeProgressTimer(currentPercentage + INCREMENT_PROGRESS_BAR);
+                }
+
+                @Override
+                public void onFinish() {
+                    changeCurrentPergunta();
+                }
+            };
+        }
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                timer.start();
+            }
+        }, WAIT_TIME_START_TIMER);
+
     }
 
     @Override
