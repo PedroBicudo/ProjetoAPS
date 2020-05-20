@@ -38,7 +38,7 @@ public class GameScorePresenter implements GameScoreContract.Presenter {
             return;
         }
         QuizRepository quizRepository = new QuizRepository(this.gameScoreActivity);
-        quizRepository.addUsuario(name, 100);
+        quizRepository.insertNewScore(name, 100);
         //Jogador jogador = new Jogador();
         //jogador.setNome(name);
         // TODO - Acessar o método de inserção do Room
