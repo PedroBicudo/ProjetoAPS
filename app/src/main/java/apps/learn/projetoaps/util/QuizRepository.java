@@ -39,7 +39,7 @@ public class QuizRepository{
         database = AppDatabase.getInstance(context.getApplicationContext());
     }
 
-    public void addUsuario(final String name, final int point) {
+    public void insertNewScore(final String name, final int point) {
         Completable.fromAction(new Action() {
             @Override
             public void run() throws Exception {
