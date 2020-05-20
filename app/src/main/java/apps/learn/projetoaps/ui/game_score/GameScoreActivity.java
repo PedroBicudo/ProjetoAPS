@@ -41,7 +41,7 @@ public class GameScoreActivity extends AppCompatActivity implements GameScoreCon
         getAlertDialog().show();
 
         this.gameScorePresenter = new GameScorePresenter(GameScoreActivity.this);
-        this.gameScorePresenter.loadPlayerList();
+        this.gameScorePresenter.getQuizJogadores();
 
     }
 
@@ -72,6 +72,11 @@ public class GameScoreActivity extends AppCompatActivity implements GameScoreCon
     @Override
     public String getPlayerName() {
         return ((TextView) view.findViewById(R.id.edit_text_player_name)).getText().toString();
+    }
+
+    @Override
+    public int getPlayerScore() {
+        return this.getIntent().getIntExtra("player_score", 0);
     }
 
     @Override

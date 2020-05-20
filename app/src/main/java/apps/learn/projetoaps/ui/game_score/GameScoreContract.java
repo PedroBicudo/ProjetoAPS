@@ -5,6 +5,8 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
+
+import apps.learn.projetoaps.data.model.Jogador;
 import apps.learn.projetoaps.data.model.Pergunta;
 import apps.learn.projetoaps.data.model.Quiz;
 import apps.learn.projetoaps.ui.adapter.PlayersViewAdapter;
@@ -14,6 +16,7 @@ public interface GameScoreContract {
     interface View extends android.view.View.OnClickListener {
         AlertDialog getAlertDialog();
         String getPlayerName();
+        int getPlayerScore();
         void setProgressBarGone();
         void setProgressBarVisible();
         void populateRecyclerView(PlayersViewAdapter playersViewAdapter);
@@ -22,7 +25,8 @@ public interface GameScoreContract {
 
     interface Presenter {
         void addNewPlayer();
-        void loadPlayerList();
+        void loadPlayerList(List<Jogador> jogadores);
+        void getQuizJogadores();
         void reloadPlayerList();
         void restartGameEvent(List<Quiz> quizzes);
         void loadQuizQuestions();

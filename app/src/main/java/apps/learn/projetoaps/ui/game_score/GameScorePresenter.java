@@ -33,35 +33,43 @@ public class GameScorePresenter implements GameScoreContract.Presenter {
     @Override
     public void addNewPlayer() {
         String name = gameScoreActivity.getPlayerName();
+        int score = gameScoreActivity.getPlayerScore();
         if (name.isEmpty()) {
             Log.i(TAG, "adicionarNovoJogador: Nome vazio, saindo...");
             return;
         }
         QuizRepository quizRepository = new QuizRepository(this.gameScoreActivity);
-        quizRepository.insertNewScore(name, 100);
-        //Jogador jogador = new Jogador();
-        //jogador.setNome(name);
-        // TODO - Acessar o método de inserção do Room
+        quizRepository.insertNewScore(name, score);
         reloadPlayerList();
     }
 
     @Override
-    public void loadPlayerList() {
-        // TODO - Acessar o método de requisição de jogadores
-        playersViewAdapter = new PlayersViewAdapter(new ArrayList<Jogador>());
+    public void loadPlayerList(List<Jogador> jogadores) {
+        playersViewAdapter = new PlayersViewAdapter(new ArrayList<>(jogadores));
         gameScoreActivity.setProgressBarGone();
         gameScoreActivity.populateRecyclerView(playersViewAdapter);
     }
 
     @Override
-    public void reloadPlayerList() {
+    public void getQuizJogadores() {
         this.gameScoreActivity.setProgressBarVisible();
-        loadPlayerList();
+        QuizRepository quizRepository = new QuizRepository(this.gameScoreActivity);
+        quizRepository.getAllJogadores()
+                .observe(this.gameScoreActivity, new Observer<List<Jogador>>() {
+                    @Override
+                    public void onChanged(List<Jogador> jogadors) {
+                        loadPlayerList(jogadors);
+                    }
+                });
+    }
+
+    @Override
+    public void reloadPlayerList() {
+        getQuizJogadores();
     }
 
     @Override
     public void loadQuizQuestions() {
-        this.gameScoreActivity.setProgressBarVisible();
         QuizRepository quizRepository = new QuizRepository(this.gameScoreActivity);
         int[] a = {1, 2, 3, 5};
         quizRepository.getQuizQuestions(a)

@@ -64,7 +64,7 @@ public class QuizRepository{
 
             @Override
             public void onError(@NonNull Throwable e) {
-
+                Log.d("DUMMY", "onError: "+e.getMessage());
             }
         });
     }
@@ -73,32 +73,8 @@ public class QuizRepository{
         return database.questoesDAO().getPerguntasByIds(id);
     }
 
-    public LiveData<List<Jogador>> getAllJogador(Context context){
-        AppDatabase.getInstance(context).questoesDAO().getAllJogadores()
-                .observe((LifecycleOwner) context, new Observer<List<Jogador>>() {
-                    @Override
-                    public void onChanged(List<Jogador> jogadors) {
-                        if (jogadors.size() == 0){
-                            Log.d("InsertandoQuery", "Ta vazio!!!");
-                        }else {
-                            Log.d("InsertandoQuery", jogadors.get(0).getNome());
-                        }
-                    }
-                });
-        return null;
-    }
-
-    public List<String> getQuizAlternativas(Context context, int[] id) {
-        AppDatabase.getInstance(context).questoesDAO().getAlternativasById(id[0])
-                .observeForever(new Observer<List<Alternativa>>() {
-                    @Override
-                    public void onChanged(List<Alternativa> alternativas) {
-                        Log.d("TestandoAlternativas", "onChanged: "+alternativas.get(0).getTexto());
-                        QuizAlternativas.add(alternativas.get(0).getTexto());
-                        Log.d("TestandoAlternativas", String.valueOf(QuizAlternativas));
-                    }
-                });
-        return QuizAlternativas;
+    public LiveData<List<Jogador>> getAllJogadores(){
+        return database.questoesDAO().getAllJogadores();
     }
 
     public int[] getRandomizedIds(){

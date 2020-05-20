@@ -9,7 +9,7 @@ import androidx.room.PrimaryKey;
 public class Jogador {
 
     @ColumnInfo(name = "ID_JOGADOR")
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     @NonNull
     private int idJogador;
 
