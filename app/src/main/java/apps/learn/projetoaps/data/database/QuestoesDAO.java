@@ -2,6 +2,7 @@ package apps.learn.projetoaps.data.database;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
+import androidx.room.Entity;
 import androidx.room.Insert;
 import androidx.room.Query;
 
@@ -9,9 +10,7 @@ import java.util.List;
 
 import apps.learn.projetoaps.data.model.Alternativa;
 import apps.learn.projetoaps.data.model.Jogador;
-import apps.learn.projetoaps.data.model.Pergunta;
 import apps.learn.projetoaps.data.model.Quiz;
-import io.reactivex.Observable;
 
 @Dao
 public interface QuestoesDAO {
@@ -25,4 +24,6 @@ public interface QuestoesDAO {
     @Query("SELECT * FROM ALTERNATIVAS where ALTERNATIVAS.ID_PERGUNTA = :id")
     LiveData<List<Alternativa>> getAlternativasById(int id);
 
+    @Query("SELECT * FROM JOGADORES")
+    LiveData<List<Jogador>> getAllJogadores();
 }

@@ -1,5 +1,6 @@
 package apps.learn.projetoaps.ui.game_score;
 
+import android.graphics.ComposePathEffect;
 import android.os.Handler;
 import android.util.Log;
 
@@ -9,17 +10,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
+import apps.learn.projetoaps.data.database.AppDatabase;
 import apps.learn.projetoaps.data.model.Jogador;
 import apps.learn.projetoaps.data.model.Pergunta;
 import apps.learn.projetoaps.data.model.Quiz;
 import apps.learn.projetoaps.ui.adapter.PlayersViewAdapter;
 import apps.learn.projetoaps.util.QuizRepository;
+import io.reactivex.rxjava3.disposables.CompositeDisposable;
 
 public class GameScorePresenter implements GameScoreContract.Presenter {
 
     private static final String TAG = "GameScorePresenter";
     private PlayersViewAdapter playersViewAdapter;
     private GameScoreActivity gameScoreActivity;
+    private final CompositeDisposable mDisposable = new CompositeDisposable();
 
     public GameScorePresenter(GameScoreActivity gameScoreActivity) {
         this.gameScoreActivity = gameScoreActivity;
@@ -33,9 +37,10 @@ public class GameScorePresenter implements GameScoreContract.Presenter {
             Log.i(TAG, "adicionarNovoJogador: Nome vazio, saindo...");
             return;
         }
-
-        Jogador jogador = new Jogador();
-        jogador.setNome(name);
+        QuizRepository quizRepository = new QuizRepository(this.gameScoreActivity);
+        quizRepository.insertNewScore(name, 100);
+        //Jogador jogador = new Jogador();
+        //jogador.setNome(name);
         // TODO - Acessar o método de inserção do Room
         reloadPlayerList();
     }
