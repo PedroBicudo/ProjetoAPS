@@ -79,31 +79,21 @@ public class QuizRepository{
 
     public int[] getRandomizedIds(){
         Random random = new Random();
-        int[] id = new int[10];
-        int parametro = 0;
-        int i = 0;
-        while (i != 10){
-            int num = random.nextInt(100) + 1;
-            if (parametro == 0){
-                id[i] = num;
-            }
-            while (contains(num, id) == true && parametro !=0){
-                num = random.nextInt(100) + 1;
-            }
-            id[i] = num;
-            parametro += 1;
-            i ++;
-        }
-        return id;
-    }
+        List<Integer> ids = new ArrayList<>(10);
 
-    private boolean contains(int elemento, int[] a){
-        for (int num : a) {
-            if(num==elemento){
-                return true;
+        while (ids.size() != 10) {
+            int randomId = random.nextInt(100) + 1;
+            if (!ids.contains(randomId)) {
+                ids.add(randomId);
             }
         }
-        return false;
+        int[] result = new int[10];
+
+        for (int pos=0; pos < 10; pos++) {
+            result[pos] = ids.get(pos);
+        }
+
+        return result;
     }
 
 }

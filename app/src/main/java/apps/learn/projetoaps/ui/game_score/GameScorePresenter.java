@@ -71,8 +71,8 @@ public class GameScorePresenter implements GameScoreContract.Presenter {
     @Override
     public void loadQuizQuestions() {
         QuizRepository quizRepository = new QuizRepository(this.gameScoreActivity);
-        int[] a = {1, 2, 3, 5};
-        quizRepository.getQuizQuestions(a)
+        int[] ids = quizRepository.getRandomizedIds();
+        quizRepository.getQuizQuestions(ids)
                 .observe(this.gameScoreActivity, new Observer<List<Quiz>>() {
                     @Override
                     public void onChanged(List<Quiz> quizzes) {
