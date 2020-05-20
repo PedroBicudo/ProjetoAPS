@@ -56,9 +56,8 @@ public class GameQuizPresenter implements GameQuizContract.Presenter {
     @Override
     public void changeCurrentPergunta() {
         if (this.getQuizzes().isEmpty()) {
-            int dummyScore = 100;
             this.timer.cancel();
-            this.getGameQuizActivity().openScoreActivity(dummyScore);
+            this.getGameQuizActivity().openScoreActivity(this.score);
 
         } else {
             startCountDownTimer();
