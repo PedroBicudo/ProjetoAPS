@@ -5,19 +5,19 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "Jogador")
+@Entity(tableName = "JOGADORES")
 public class Jogador {
 
-    @ColumnInfo(name = "ID_Jogador")
-    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "ID_JOGADOR")
+    @PrimaryKey
     @NonNull
     private int idJogador;
 
-    @ColumnInfo(name = "Nome")
+    @ColumnInfo(name = "NOME")
     @NonNull
     private String nome;
 
-    @ColumnInfo(name = "Resultado")
+    @ColumnInfo(name = "SCORE")
     @NonNull
     private int resultado;
 
