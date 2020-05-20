@@ -13,7 +13,7 @@ import apps.learn.projetoaps.data.model.Pergunta;
 @Database(entities = {Alternativa.class, Pergunta.class, Jogador.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
 
-    private static final String DB_NAME = "APS65.db";
+    private static final String DB_NAME = "APS.db";
     private static AppDatabase instance;
 
     public static AppDatabase getInstance(Context context) {
