@@ -47,10 +47,30 @@ public class GameQuizPresenter implements GameQuizContract.Presenter {
         this.score = score;
     }
 
+    public CountDownTimer getTimer() {
+        return timer;
+    }
+
+    public void setTimer(CountDownTimer timer) {
+        this.timer = timer;
+    }
+
     public GameQuizPresenter(GameQuizActivity gameQuizActivity, ArrayList<Quiz> quizzes) {
         this.setGameQuizActivity(gameQuizActivity);
         this.setQuizzes(quizzes);
         this.setScore(0);
+        this.setTimer(new CountDownTimer(TIME_TO_ANSWER_MILISECONDS, INTERVAL_TIME_TO_ANSWER_MILISECONDS) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                int currentPercentage = getGameQuizActivity().getProgressCurrentValue();
+                getGameQuizActivity().changeProgressTimer(currentPercentage + INCREMENT_PROGRESS_BAR);
+            }
+
+            @Override
+            public void onFinish() {
+                changeCurrentPergunta();
+            }
+        });
     }
 
     @Override
@@ -72,33 +92,8 @@ public class GameQuizPresenter implements GameQuizContract.Presenter {
     @Override
     public void startCountDownTimer() {
         getGameQuizActivity().changeProgressTimer(0);
-
-        if (this.timer != null) {
-            this.timer.cancel();
-
-        } else {
-            this.timer = new CountDownTimer(TIME_TO_ANSWER_MILISECONDS, INTERVAL_TIME_TO_ANSWER_MILISECONDS) {
-                @Override
-                public void onTick(long millisUntilFinished) {
-                    int currentPercentage = gameQuizActivity.getProgressCurrentValue();
-                    gameQuizActivity.changeProgressTimer(currentPercentage + INCREMENT_PROGRESS_BAR);
-                }
-
-                @Override
-                public void onFinish() {
-                    changeCurrentPergunta();
-                }
-            };
-        }
-
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                timer.start();
-            }
-        }, WAIT_TIME_START_TIMER);
-
+        timer.cancel();
+        timer.start();
     }
 
     @Override

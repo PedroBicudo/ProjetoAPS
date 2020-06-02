@@ -21,7 +21,6 @@ public interface GameQuizContract {
         int CHOICE_TIME_VISUALIZATION = 300;
         int TIME_TO_ANSWER_MILISECONDS = 10000;
         int INTERVAL_TIME_TO_ANSWER_MILISECONDS = 1000;
-        int WAIT_TIME_START_TIMER = INTERVAL_TIME_TO_ANSWER_MILISECONDS;
         int INCREMENT_PROGRESS_BAR = 10;
         void changeCurrentPergunta();
         void startCountDownTimer();
