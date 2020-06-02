@@ -11,16 +11,16 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".ui.splash_screen.SplashScreen"
-            android:theme="@style/SplashScreen">
+            android:theme="@style/SplashScreen"
+            android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.game_menu.GameMenuActivity" />
-        <activity android:name=".ui.game_quiz.GameQuizActivity" />
-        <activity android:name=".ui.game_score.GameScoreActivity"/>
+        <activity android:name=".ui.game_menu.GameMenuActivity" android:launchMode="singleInstance"/>
+        <activity android:name=".ui.game_quiz.GameQuizActivity" android:launchMode="singleInstance"/>
+        <activity android:name=".ui.game_score.GameScoreActivity" android:launchMode="singleInstance"/>
     </application>
-
 </manifest>
